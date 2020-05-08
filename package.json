@@ -1,0 +1,31 @@
+{
+  "name": "CV",
+  "version": "1.0.0",
+  "description": "Experimental CV",
+  "repository": "https://github.com/RicardoRodrigues/CV",
+  "author": "Ricardo Rodrigues",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "next": "^9.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.0"
+  },
+  "scripts": {
+    "start": "next",
+    "build": "rm -rf node_modules/.cache && rimraf out && next build && next export && touch out/.nojekyll && gh-pages -d out -t true"
+  },
+  "devDependencies": {
+    "@types/next": "^9.0.0",
+    "@types/node": "^13.13.5",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "@types/styled-components": "^5.1.0",
+    "@zeit/next-typescript": "^1.1.1",
+    "babel-plugin-styled-components": "^1.10.7",
+    "gh-pages": "^2.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.3"
+  }
+}
