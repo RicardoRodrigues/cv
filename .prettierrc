@@ -1,0 +1,9 @@
+{
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": [".prettierrc", ".stylelintrc"],
+      "options": { "parser": "json" }
+    }
+  ]
+}

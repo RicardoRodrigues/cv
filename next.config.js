@@ -10,7 +10,6 @@ module.exports = {
       "/": { page: "/" }
     }
   },
-  //assetPrefix: '',
   assetPrefix: !debug ? '/CV/' : '',
   webpack: (config, { dev }) => {
     // Perform customizations to webpack config
