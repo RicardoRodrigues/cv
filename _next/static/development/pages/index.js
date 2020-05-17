@@ -25853,6 +25853,222 @@ if ( true && typeof window !== 'undefined') {
 
 /***/ }),
 
+/***/ "./node_modules/styled-media-query/dist/styled-media-query.es.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/styled-media-query/dist/styled-media-query.es.js ***!
+  \***********************************************************************/
+/*! exports provided: default, pxToEm, pxToRem, defaultBreakpoints, generateMedia */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pxToEm", function() { return pxToEm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pxToRem", function() { return pxToRem; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "defaultBreakpoints", function() { return defaultBreakpoints; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "generateMedia", function() { return generateMedia; });
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+function _taggedTemplateLiteral(strings, raw) {
+  if (!raw) {
+    raw = strings.slice(0);
+  }
+
+  return Object.freeze(Object.defineProperties(strings, {
+    raw: {
+      value: Object.freeze(raw)
+    }
+  }));
+}
+
+/**
+ * Converts breakpoint units in px to rem or em
+ * @param {Object} breakpoints - an object containing breakpoint names as keys and the width as value
+ * @param {number} ratio [16] - size of 1 rem in px. What is your main font-size in px?
+ * @param {'rem' | 'em'} unit
+ */
+function pxToEmOrRem(breakpoints) {
+  var ratio = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
+  var unit = arguments.length > 2 ? arguments[2] : undefined;
+  var newBreakpoints = {};
+
+  for (var key in breakpoints) {
+    var point = breakpoints[key];
+
+    if (String(point).includes('px')) {
+      newBreakpoints[key] = +(parseInt(point) / ratio) + unit;
+      continue;
+    }
+
+    newBreakpoints[key] = point;
+  }
+
+  return newBreakpoints;
+}
+/**
+ * Converts breakpoint units in px to em 
+ * @param {Object} breakpoints - an object containing breakpoint names as keys and the width as value
+ * @param {number} ratio [16] - size of 1em in px. What is your main font-size in px?
+ */
+
+
+function pxToEm(breakpoints) {
+  var ratio = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
+  return pxToEmOrRem(breakpoints, ratio, 'em');
+}
+/**
+ * Converts breakpoint units in px to rem 
+ * @param {Object} breakpoints - an object containing breakpoint names as keys and the width as value
+ * @param {number} ratio [16] - size of 1rem in px. What is your main font-size in px?
+ */
+
+function pxToRem(breakpoints) {
+  var ratio = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 16;
+  return pxToEmOrRem(breakpoints, ratio, 'rem');
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n          @media (min-width: ", ") {\n            ", "\n          }\n        "]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n          @media (max-width: ", ") {\n            ", "\n          }\n        "]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n    @media (min-width: ", ") and\n      (max-width: ", ") {\n      ", "\n    }\n  "]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    @media (min-width: ", ") {\n      ", "\n    }\n  "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    @media (max-width: ", ") {\n      ", "\n    }\n  "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+/**
+ * Default media breakpoints
+ * @type {Object}
+ */
+
+var defaultBreakpoints = {
+  huge: '1440px',
+  large: '1170px',
+  medium: '768px',
+  small: '450px'
+};
+
+function getSizeFromBreakpoint(breakpointValue) {
+  var breakpoints = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+  if (breakpoints[breakpointValue]) {
+    return breakpoints[breakpointValue];
+  } else if (parseInt(breakpointValue)) {
+    return breakpointValue;
+  } else {
+    console.error('styled-media-query: No valid breakpoint or size specified for media.');
+    return '0';
+  }
+}
+/**
+ * Media query generator
+ * @param {Object} breakpoints - Map labels to breakpoint sizes
+ * @return {Object} - Media generators for each breakpoint
+ */
+
+
+function generateMedia() {
+  var breakpoints = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultBreakpoints;
+
+  var lessThan = function lessThan(breakpoint) {
+    return function () {
+      return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(_templateObject(), getSizeFromBreakpoint(breakpoint, breakpoints), styled_components__WEBPACK_IMPORTED_MODULE_0__["css"].apply(void 0, arguments));
+    };
+  };
+
+  var greaterThan = function greaterThan(breakpoint) {
+    return function () {
+      return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(_templateObject2(), getSizeFromBreakpoint(breakpoint, breakpoints), styled_components__WEBPACK_IMPORTED_MODULE_0__["css"].apply(void 0, arguments));
+    };
+  };
+
+  var between = function between(firstBreakpoint, secondBreakpoint) {
+    return function () {
+      return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(_templateObject3(), getSizeFromBreakpoint(firstBreakpoint, breakpoints), getSizeFromBreakpoint(secondBreakpoint, breakpoints), styled_components__WEBPACK_IMPORTED_MODULE_0__["css"].apply(void 0, arguments));
+    };
+  };
+
+  var oldStyle = Object.keys(breakpoints).reduce(function (acc, label) {
+    var size = breakpoints[label];
+
+    acc.to[label] = function () {
+      console.warn("styled-media-query: Use media.lessThan('".concat(label, "') instead of old media.to.").concat(label, " (Probably we'll deprecate it)"));
+      return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(_templateObject4(), size, styled_components__WEBPACK_IMPORTED_MODULE_0__["css"].apply(void 0, arguments));
+    };
+
+    acc.from[label] = function () {
+      console.warn("styled-media-query: Use media.greaterThan('".concat(label, "') instead of old media.from.").concat(label, " (Probably we'll deprecate it)"));
+      return Object(styled_components__WEBPACK_IMPORTED_MODULE_0__["css"])(_templateObject5(), size, styled_components__WEBPACK_IMPORTED_MODULE_0__["css"].apply(void 0, arguments));
+    };
+
+    return acc;
+  }, {
+    to: {},
+    from: {}
+  });
+  return Object.assign({
+    lessThan: lessThan,
+    greaterThan: greaterThan,
+    between: between
+  }, oldStyle);
+}
+/**
+ * Media object with default breakpoints
+ * @return {object} - Media generators for each size
+ */
+
+var index = generateMedia();
+/**
+ * Usage: styled.div` ${media.from.medium`background: #000;`} `;
+ * With this code, background for small and medium sizes will be `default` and for more than medium, will be `#000`
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = (index);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/tslib/tslib.es6.js":
 /*!*****************************************!*\
   !*** ./node_modules/tslib/tslib.es6.js ***!
@@ -33790,7 +34006,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function _templateObject() {
-  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  ", ";\n  body {\n    ", ";\n    background: ", ";\n    color: ", ";\n    ", ";\n\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n  }\n  h1 {\n    ", ";\n  }\n  h2 {\n    ", ";\n  }\n  h3 {\n    ", ";\n  }\n  h4 {\n    ", ";\n  }\n"]);
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n  ", ";\n  body {\n    ", ";\n    background: ", ";\n    color: ", ";\n    ", ";\n\n    width: 100vw;\n    height: 100vh;\n    overflow: hidden;\n  }\n  h1 {\n    ", ";\n  }\n  h2 {\n    ", ";\n  }\n  h3 {\n    ", ";\n  }\n  h4 {\n    ", ";\n  }\n  h5 {\n    ", ";\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -33802,7 +34018,7 @@ function _templateObject() {
 
 
 
-var GlobalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject(), polished__WEBPACK_IMPORTED_MODULE_2__["normalize"], _theme__WEBPACK_IMPORTED_MODULE_3__["default"].fontFamily.base, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].palette.background.body, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].palette.text.primary, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.body, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h1, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h2, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h3, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h4);
+var GlobalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject(), polished__WEBPACK_IMPORTED_MODULE_2__["normalize"], _theme__WEBPACK_IMPORTED_MODULE_3__["default"].fontFamily.base, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].palette.background.body, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].palette.text.primary, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.body, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h1, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h2, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h3, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h4, _theme__WEBPACK_IMPORTED_MODULE_3__["default"].typography.h5);
 /* harmony default export */ __webpack_exports__["default"] = (GlobalStyle);
 
 /***/ }),
@@ -33819,35 +34035,128 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme */ "./src/theme.ts");
+/* harmony import */ var _SkillBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../SkillBar */ "./src/components/SkillBar/index.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/psyckic/Development/CV/src/components/About/index.tsx";
 
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
+
+
 var Holder = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "About__Holder",
   componentId: "sc-1www6jp-0"
-})([""]);
+})(["", ";a{font-weight:bold;transition:.4s ease-in-out;color:", ";text-decoration:underline;&:hover{color:", ";}}"], _theme__WEBPACK_IMPORTED_MODULE_2__["default"].typography.body, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].palette.button.secondary.normal, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].palette.button.secondary.hover);
+var SkillBarHolder = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_SkillBar__WEBPACK_IMPORTED_MODULE_3__["default"]).withConfig({
+  displayName: "About__SkillBarHolder",
+  componentId: "sc-1www6jp-1"
+})(["margin-bottom:", ";"], _theme__WEBPACK_IMPORTED_MODULE_2__["default"].spacing(3));
+var SKILLS = [{
+  id: 1,
+  name: 'HTML',
+  percentage: 90
+}, {
+  id: 2,
+  name: 'CSS',
+  percentage: 90
+}, {
+  id: 3,
+  name: 'Javascript',
+  percentage: 80
+}, {
+  id: 4,
+  name: 'Php',
+  percentage: 60
+}];
 
 var About = function About(_ref) {
-  var className = _ref.className;
+  var className = _ref.className,
+      isOpen = _ref.isOpen;
   return __jsx(Holder, {
     className: className,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16,
+      lineNumber: 53,
       columnNumber: 3
     }
   }, __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17,
+      lineNumber: 54,
       columnNumber: 5
     }
-  }, "I'm Ricardo and come from small island on Atlantic ocean. Called Madeira, Island of flowers... or where Cristiano Ronaldo is from."), "A passionate for new emerging technologies such as HTML5 and CSS3. Born in Venezuela but spent most of my life on Madeira Island, Portugal. I can characterize me for my persistence, looking for new emerging technologies. I like to work in team. Random facts: - Don't drink or smoke, but love Coca-Cola - Love to travel and know new people and culture - Love Basketball and Footbal, as practice too - Can't be too much far swimm in some nice beach and sun");
+  }, "I'm ", __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 12
+    }
+  }, "Ricardo"), ", a ", __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 54,
+      columnNumber: 40
+    }
+  }, "Front End Developer"), " and passionate for new emerging technologies. My strong persistence is one of the biggest strengths."), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 5
+    }
+  }, "Most of my life was spent in an Island on Atlantic Ocean, called ", __jsx("a", {
+    href: "http://en.wikipedia.org/wiki/Madeira",
+    target: "_blank",
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 73
+    }
+  }, "Madeira Island"), ", Island of flowers... or just look where ", __jsx("strong", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 55,
+      columnNumber: 196
+    }
+  }, "Cristiano Ronaldo"), " born."), __jsx("p", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 56,
+      columnNumber: 5
+    }
+  }, "Travel is a must and know new people and cultures. Can't wait for a swimm in some nice beach and sun (What happen when you grow near the sea). Love to practice Basketball and Football."), __jsx("h5", {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 57,
+      columnNumber: 5
+    }
+  }, "Skills"), SKILLS.map(function (_ref2) {
+    var id = _ref2.id,
+        name = _ref2.name,
+        percentage = _ref2.percentage;
+    return __jsx(SkillBarHolder, {
+      key: id,
+      name: name,
+      percentage: percentage,
+      isVisible: isOpen,
+      __self: _this,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 59,
+        columnNumber: 7
+      }
+    });
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (About);
@@ -33924,9 +34233,9 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 //TODO: remove external place
 var METADATA = {
-  title: 'Ricardo Rodrigues | Personal Portfolio Ricardo Rodrigues',
-  description: 'Personal Portfolio Ricardo Rodrigues',
-  keywords: ['Ricardo', 'Rodrigues', 'frontend', 'curriculum', 'portfolio'],
+  title: 'Ricardo Rodrigues | Front End Developer',
+  description: 'Personal Portfolio. A passionate for new emerging technologies.',
+  keywords: ['Ricardo', 'Rodrigues', 'front', 'end', 'curriculum', 'portfolio'],
   author: 'Ricardo Rodrigues',
   favicon: 'data:image/vnd.microsoft.icon;base64,AAABAAEAEBAAAAAAAABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAADPjAcAzogAAM6JAADOiQAAzokANM6JAJjOiQDazokA9c6JAPbOiQDczokAnM6JADjOiQAAzokAAM6JAADOiAAAz40HAM6JAADOigAFzokAisyFAPbMhgD/zooA/86KAP/OigD/zooA/86KAP/OigD4zooAkM6KAAjOigAAzokAAM+NBwDOiQAGzYcAr8+LBP/bqEH/2KAx/82GAP/OigD/zooA/82IAP/MhAD/zIQA/8yEAP/OiQC3zooACM6JAADPjQcAzYcAhtCMC//z4Lv////////////fsVb/zIQA/86IAP/SkhT/7dKd//HbsP/htV//0I4M/86JAJDOiQAAz40HLcuCAPnnxH3//////92sS//px4T/+/Lf/86KBP/LggD/7dCX///////15cf///////LdtP/NhgH8zokANc+MBZbOiAL/+/Lf//ThvP/KfQD/1Jcd///99//XnSr/zogB//747P/z3rX/yn8A/9ihMv/cq0f/zYcA/86JAJ/OigLa0pMU///////ry4z/y4EA/9CMBv/99un/3q9Q/9WZIv//////47ll/8uDAP/NhgD/zYYA/86KAP/OiQDgzooB9dOVGP//////682R/8uCAP/NhgD/+u7Y/+O6aP/juGT//fbq/9KRE//NhwD/zooA/86KAP/OigD/zokA+c+LBPTQjQj//vnv//Tguv/LggD/1Zkk//z05P/469L//ffr/+vOkv/SkRj/zIQA/86JAP/OigD/zooA/86JAPnPjQfYzIMA//LcsP///Pb/0I0K/+rJi//++/T///z2//Leuf/68Nz///v0/+fCe//NhwD/zokA/86KAP/OiQDfz40HksyEAP/cqUL//////+fEfP/IewD/682Q///89P/OhwD/zokJ/+bAdv//////4bVe/8yEAP/OigD/zokAm8+NByrOiQD3zIUA/+/Vov//////26dC/9OTGP/qyYn/z4sD/8yDAP/NhwD///z1//Lcsv/MgwD/zooA+86JADHPjQcAzokAgM2IAP/Piwn/8t2z///////pyIn/1Jgk/9GRE//Skxv/58N8///////mwXb/zIMA/86KAIrOiQAAz40HAM6JAAPOigCnzYcA/86IAv/lv3X//Pbr/////////fr////////////u05//z4sJ/86JAK/OigAGzokAAM+MBgDOiAAAzokAAs6JAIDNiADxy4MA/9COC//apj7/4bZh/+C0Xf/WnSz/zIUA882HAIfOiQAFzokAAM6IAADQkA4Az4wHAM+NBwDPjQcAz40HLM+NB5DOiwPUzYcA8cyGAPHMhgDWzYkAk8+MBjDPjQcAz40HAM+NBwDPjAcA+B8AAOAHAADAAwAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAQAAgAEAAMADAADgBwAA+B8AAA=='
 };
@@ -34457,7 +34766,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var HolderWithAnimation = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(react_animated_css__WEBPACK_IMPORTED_MODULE_2__["Animated"]).withConfig({
   displayName: "OverlayWithAnimation__HolderWithAnimation",
   componentId: "sc-11tbvng-0"
-})(["background:", ";width:90vw;height:90vh;padding:5vh 5vw;z-index:9;position:fixed;max-height:100vh;overflow-y:auto;"], _theme__WEBPACK_IMPORTED_MODULE_3__["default"].palette.background.secondary);
+})(["background:", ";width:90vw;height:90vh;padding:5vh 5vw;z-index:9;position:fixed;max-height:100vh;overflow-y:auto;"], _theme__WEBPACK_IMPORTED_MODULE_3__["default"].palette.background.terciary);
 
 var OverlayWithAnimation = function OverlayWithAnimation(_ref) {
   var className = _ref.className,
@@ -34476,7 +34785,7 @@ var OverlayWithAnimation = function OverlayWithAnimation(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29,
+      lineNumber: 28,
       columnNumber: 3
     }
   }, __jsx(_ArrowButton__WEBPACK_IMPORTED_MODULE_4__["default"], {
@@ -34485,20 +34794,193 @@ var OverlayWithAnimation = function OverlayWithAnimation(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38,
+      lineNumber: 37,
       columnNumber: 5
     }
   }), __jsx("h3", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39,
+      lineNumber: 38,
       columnNumber: 5
     }
   }, title), children);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (OverlayWithAnimation);
+
+/***/ }),
+
+/***/ "./src/components/PageButton/index.tsx":
+/*!*********************************************!*\
+  !*** ./src/components/PageButton/index.tsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/taggedTemplateLiteral */ "./node_modules/@babel/runtime/helpers/esm/taggedTemplateLiteral.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var polished__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! polished */ "./node_modules/polished/dist/polished.esm.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../theme */ "./src/theme.ts");
+/* harmony import */ var _media__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../media */ "./src/media.ts");
+
+
+var _this = undefined,
+    _jsxFileName = "/Users/psyckic/Development/CV/src/components/PageButton/index.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement;
+
+function _templateObject2() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    width: 10vw;\n    height: 10vw;\n    text-transform: uppercase;\n    text-align: center;\n    background: transparent;\n    position: absolute;\n    bottom: 40vh;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    border-radius: 0px 0px 100px 100px;\n    &:hover {\n      background: ", ";\n      color: ", ";\n    }\n    ", "\n  "]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = Object(_babel_runtime_helpers_esm_taggedTemplateLiteral__WEBPACK_IMPORTED_MODULE_0__["default"])(["\n    padding: 0 6%;\n    font-weight: bold;\n    text-decoration: underline;\n    &:hover {\n      color: ", ";\n    }\n  "]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+
+
+
+
+
+var DIRECTION_STYLES = {
+  Left: {
+    left: 0,
+    transform: 'rotate(-90deg)'
+  },
+  Right: {
+    right: 0,
+    transform: 'rotate(90deg)'
+  }
+};
+var Holder = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].div.withConfig({
+  displayName: "PageButton__Holder",
+  componentId: "sc-3himh-0"
+})(["transition:.4s ease-in-out;transition-property:color,background;z-index:4;font-size:25px;display:inline-block;", ";", ";&:hover{cursor:pointer;}"], _media__WEBPACK_IMPORTED_MODULE_5__["default"].lessThan('sm')(_templateObject(), _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.button.primary.hover), function (_ref) {
+  var placement = _ref.placement;
+  return _media__WEBPACK_IMPORTED_MODULE_5__["default"].greaterThan('sm')(_templateObject2(), Object(polished__WEBPACK_IMPORTED_MODULE_3__["transparentize"])(0.1, _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.background.secondary), _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.text.terciary, DIRECTION_STYLES[placement]);
+});
+
+var PageButton = function PageButton(_ref2) {
+  var className = _ref2.className,
+      placement = _ref2.placement,
+      onClick = _ref2.onClick,
+      children = _ref2.children;
+  return __jsx(Holder, {
+    className: className,
+    onClick: onClick,
+    placement: placement,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 72,
+      columnNumber: 5
+    }
+  }, children);
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PageButton);
+
+/***/ }),
+
+/***/ "./src/components/SkillBar/index.tsx":
+/*!*******************************************!*\
+  !*** ./src/components/SkillBar/index.tsx ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme */ "./src/theme.ts");
+var _this = undefined,
+    _jsxFileName = "/Users/psyckic/Development/CV/src/components/SkillBar/index.tsx";
+
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+
+var Holder = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "SkillBar__Holder",
+  componentId: "r6h5dv-0"
+})([""]);
+var Label = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "SkillBar__Label",
+  componentId: "r6h5dv-1"
+})(["", " margin-bottom:", ""], _theme__WEBPACK_IMPORTED_MODULE_2__["default"].typography.small, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].spacing(1));
+var Progress = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "SkillBar__Progress",
+  componentId: "r6h5dv-2"
+})(["padding:4px;background:rgba(0,0,0,0.25);border-radius:6px;box-shadow:inset 0 1px 2px rgba(0,0,0,0.25),0 1px rgba(255,255,255,0.08);"]);
+var ProgressBar = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
+  displayName: "SkillBar__ProgressBar",
+  componentId: "r6h5dv-3"
+})(["width:", ";height:16px;border-radius:4px;background-color:#9ACD32;background-image:linear-gradient(to bottom,rgba(255,255,255,0.3),rgba(255,255,255,0.05));transition:0.7s ease-in-out;transition-delay:0.5s;box-shadow:0 0 1px 1px rgba(0,0,0,0.25),inset 0 1px rgba(255,255,255,0.1);}"], function (_ref) {
+  var width = _ref.width,
+      isVisible = _ref.isVisible;
+  return isVisible ? width : 0;
+});
+
+var SkillBar = function SkillBar(_ref2) {
+  var className = _ref2.className,
+      name = _ref2.name,
+      percentage = _ref2.percentage,
+      _ref2$isVisible = _ref2.isVisible,
+      isVisible = _ref2$isVisible === void 0 ? true : _ref2$isVisible;
+  return __jsx(Holder, {
+    className: className,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44,
+      columnNumber: 3
+    }
+  }, __jsx(Label, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 45,
+      columnNumber: 5
+    }
+  }, name), __jsx(Progress, {
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 46,
+      columnNumber: 5
+    }
+  }, __jsx(ProgressBar, {
+    width: "".concat(percentage, "%"),
+    isVisible: isVisible,
+    __self: _this,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 47,
+      columnNumber: 7
+    }
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (SkillBar);
 
 /***/ }),
 
@@ -34625,6 +35107,32 @@ var SocialMenu = function SocialMenu(_ref) {
 
 /***/ }),
 
+/***/ "./src/media.ts":
+/*!**********************!*\
+  !*** ./src/media.ts ***!
+  \**********************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_media_query__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-media-query */ "./node_modules/styled-media-query/dist/styled-media-query.es.js");
+/* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./theme */ "./src/theme.ts");
+
+
+var breakpointsInPx = {};
+var breakpoints = _theme__WEBPACK_IMPORTED_MODULE_1__["default"].breakpoints;
+
+for (var key in breakpoints) {
+  if (breakpoints.hasOwnProperty(key)) {
+    breakpointsInPx[key] = "".concat(breakpoints[key], "px");
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(styled_media_query__WEBPACK_IMPORTED_MODULE_0__["generateMedia"])(breakpointsInPx));
+
+/***/ }),
+
 /***/ "./src/pages/index.tsx":
 /*!*****************************!*\
   !*** ./src/pages/index.tsx ***!
@@ -34637,9 +35145,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var polished__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! polished */ "./node_modules/polished/dist/polished.esm.js");
-/* harmony import */ var _rehooks_component_size__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @rehooks/component-size */ "./node_modules/@rehooks/component-size/index.js");
-/* harmony import */ var _rehooks_component_size__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_rehooks_component_size__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _rehooks_component_size__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @rehooks/component-size */ "./node_modules/@rehooks/component-size/index.js");
+/* harmony import */ var _rehooks_component_size__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_rehooks_component_size__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var polished__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! polished */ "./node_modules/polished/dist/polished.esm.js");
 /* harmony import */ var _theme__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../theme */ "./src/theme.ts");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils */ "./src/utils.ts");
 /* harmony import */ var _components_Layout__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Layout */ "./src/components/Layout/index.tsx");
@@ -34648,6 +35156,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SocialMenu__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/SocialMenu */ "./src/components/SocialMenu/index.tsx");
 /* harmony import */ var _components_OverlayWithAnimation__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/OverlayWithAnimation */ "./src/components/OverlayWithAnimation/index.tsx");
 /* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/About */ "./src/components/About/index.tsx");
+/* harmony import */ var _components_PageButton__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/PageButton */ "./src/components/PageButton/index.tsx");
 var _this = undefined,
     _jsxFileName = "/Users/psyckic/Development/CV/src/pages/index.tsx";
 
@@ -34668,7 +35177,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var LoaderOverlay = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_components_Loader__WEBPACK_IMPORTED_MODULE_8__["default"]).withConfig({
   displayName: "pages__LoaderOverlay",
   componentId: "lsk2yb-0"
-})(["", ""], Object(polished__WEBPACK_IMPORTED_MODULE_2__["cover"])());
+})(["", ""], Object(polished__WEBPACK_IMPORTED_MODULE_3__["cover"])());
 var FadeIn = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "pages__FadeIn",
   componentId: "lsk2yb-1"
@@ -34692,41 +35201,11 @@ var Menu = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withCon
   displayName: "pages__Menu",
   componentId: "lsk2yb-4"
 })(["margin-top:6vh;"]);
-var PageButton = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
-  displayName: "pages__PageButton",
-  componentId: "lsk2yb-5"
-})(["transition:.4s ease-in-out;transition-property:color,background;z-index:4;font-size:25px;display:inline-block;", " &:hover{cursor:pointer;}"], function (_ref) {
-  var isSmall = _ref.isSmall;
-  console.log({
-    isSmall: isSmall
-  });
-
-  if (isSmall) {
-    return Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["padding:0 6%;font-weight:bold;text-decoration:underline;&:hover{color:", ";}"], _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.button.primary.hover);
-  }
-
-  return Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["width:10vw;height:10vw;text-transform:uppercase;text-align:center;transform:rotate(-90deg);background:transparent;position:absolute;left:0;bottom:40vh;display:flex;flex-direction:column;justify-content:center;border-radius:0px 0px 100px 100px;&:hover{background:", ";color:", ";}"], Object(polished__WEBPACK_IMPORTED_MODULE_2__["transparentize"])(0.1, _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.background.secondary), _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.button.secondary.normal);
-});
-var PageButton2 = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
-  displayName: "pages__PageButton2",
-  componentId: "lsk2yb-6"
-})(["transition:.4s ease-in-out;transition-property:color,background;z-index:4;font-size:25px;display:inline-block;", " &:hover{cursor:pointer;}"], function (_ref2) {
-  var isSmall = _ref2.isSmall;
-  console.log({
-    isSmall: isSmall
-  });
-
-  if (isSmall) {
-    return Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["padding:0 6%;font-weight:bold;text-decoration:underline;&:hover{color:", ";}"], _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.button.primary.hover);
-  }
-
-  return Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["css"])(["width:10vw;height:10vw;text-transform:uppercase;text-align:center;transform:rotate(90deg);background:transparent;position:absolute;right:0;bottom:40vh;display:flex;flex-direction:column;justify-content:center;border-radius:0px 0px 100px 100px;&:hover{background:", ";color:", ";}"], Object(polished__WEBPACK_IMPORTED_MODULE_2__["transparentize"])(0.1, _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.background.secondary), _theme__WEBPACK_IMPORTED_MODULE_4__["default"].palette.button.secondary.normal);
-});
 
 var Home = function Home() {
   var holderRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
 
-  var _useComponentSize = _rehooks_component_size__WEBPACK_IMPORTED_MODULE_3___default()(holderRef),
+  var _useComponentSize = _rehooks_component_size__WEBPACK_IMPORTED_MODULE_2___default()(holderRef),
       holderWidth = _useComponentSize.width;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
@@ -34747,7 +35226,7 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 153,
+      lineNumber: 61,
       columnNumber: 5
     }
   }, !hasAnimationEnd && __jsx(LoaderOverlay, {
@@ -34761,28 +35240,28 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 155,
+      lineNumber: 63,
       columnNumber: 9
     }
   }), __jsx(_components_Layout__WEBPACK_IMPORTED_MODULE_6__["default"], {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 161,
+      lineNumber: 69,
       columnNumber: 7
     }
   }, isLoaded && hasAnimationEnd && __jsx(FadeIn, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 163,
+      lineNumber: 71,
       columnNumber: 11
     }
   }, __jsx(Middle, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 164,
+      lineNumber: 72,
       columnNumber: 13
     }
   }, __jsx(_components_IntroCard__WEBPACK_IMPORTED_MODULE_7__["default"], {
@@ -34791,43 +35270,43 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 165,
+      lineNumber: 73,
       columnNumber: 15
     }
   }), __jsx(SocialMenuHolder, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 169,
+      lineNumber: 77,
       columnNumber: 15
     }
   }), __jsx(Menu, {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 170,
+      lineNumber: 78,
       columnNumber: 15
     }
-  }, __jsx(PageButton, {
-    isSmall: isSmall,
+  }, __jsx(_components_PageButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    placement: "Left",
     onClick: function onClick() {
       return setActiveOverlay(MenuType.About);
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 171,
+      lineNumber: 79,
       columnNumber: 17
     }
-  }, "About"), __jsx(PageButton2, {
-    isSmall: isSmall,
+  }, "About"), __jsx(_components_PageButton__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    placement: "Right",
     onClick: function onClick() {
       return setActiveOverlay(MenuType.Portfolio);
     },
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 172,
+      lineNumber: 80,
       columnNumber: 17
     }
   }, "Folio"))), __jsx(_components_OverlayWithAnimation__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -34839,14 +35318,15 @@ var Home = function Home() {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 175,
+      lineNumber: 83,
       columnNumber: 13
     }
   }, __jsx(_components_About__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    isOpen: MenuType.About === activeOverlay,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 180,
+      lineNumber: 88,
       columnNumber: 15
     }
   })))));
@@ -34865,12 +35345,11 @@ var Home = function Home() {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var polished__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! polished */ "./node_modules/polished/dist/polished.esm.js");
-
 var primary = '#08C';
 var secondary = '#515052';
 var terciary = '#191A21';
-var white = '#FFF';
+var white = '#FFFFFF';
+var lightGray = '#EEEEEE';
 var theme = {
   palette: {
     primary: {
@@ -34881,7 +35360,8 @@ var theme = {
     },
     background: {
       body: white,
-      secondary: primary
+      secondary: primary,
+      terciary: lightGray
     },
     text: {
       primary: terciary,
@@ -34894,8 +35374,8 @@ var theme = {
         hover: primary
       },
       secondary: {
-        normal: white,
-        hover: Object(polished__WEBPACK_IMPORTED_MODULE_0__["transparentize"])(0.4, white)
+        normal: terciary,
+        hover: primary
       }
     }
   },
@@ -34928,9 +35408,17 @@ var theme = {
       'font-weight': 'bold',
       'font-size': '28px'
     },
+    h5: {
+      'font-weight': 'bold',
+      'font-size': '24px'
+    },
     body: {
       'font-weight': 'normal',
-      'font-size': '14px'
+      'font-size': '20px'
+    },
+    small: {
+      'font-weight': 'normal',
+      'font-size': '18px'
     }
   },
   breakpoints: {
