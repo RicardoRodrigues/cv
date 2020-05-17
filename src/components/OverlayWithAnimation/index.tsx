@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Animated } from 'react-animated-css';
+import { Animated, AnimationString } from 'react-animated-css';
 import theme from '../../theme';
+import {breakpointsInPx} from '../../media';
 import ArrowButton from '../ArrowButton';
-
 
 const HolderWithAnimation = styled(Animated)`
   background: ${theme.palette.background.terciary};
@@ -16,27 +16,34 @@ const HolderWithAnimation = styled(Animated)`
   overflow-y: auto;
 `;
 
+const ContentHolder = styled.div`
+  max-width: ${breakpointsInPx.lg};
+  margin: auto;
+`;
 
 interface IProps {
   className?: string;
   title: string;
   isVisible: boolean;
   onClose: () => void;
+  direction: 'Left' | 'Right';
 }
 
-const OverlayWithAnimation: FC<IProps> = ({className, children, title, isVisible, onClose}) => (
+const OverlayWithAnimation: FC<IProps> = ({className, children, title, isVisible, onClose, direction}) => (
   <HolderWithAnimation
     className={className}
-    animationIn="slideInLeft"
-    animationOut="slideOutLeft"
+    animationIn={`slideIn${direction}` as AnimationString}
+    animationOut={`slideOut${direction}` as AnimationString}
     animationInDuration={1000}
     animationOutDuration={1000}
     isVisible={isVisible}
     animateOnMount={false}
   >
-    <ArrowButton direction="Left" onClick={onClose} />
-    <h3>{title}</h3>
-    {children}
+    <ContentHolder>
+      <ArrowButton direction={direction} onClick={onClose} />
+      <h3>{title}</h3>
+      {children}
+    </ContentHolder>
   </HolderWithAnimation>
 );
 

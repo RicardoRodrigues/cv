@@ -11,6 +11,7 @@ import Loader from '../components/Loader';
 import SocialMenu from '../components/SocialMenu';
 import OverlayWithAnimation from '../components/OverlayWithAnimation';
 import About from '../components/About';
+import Folio from '../components/Folio';
 import PageButton from '../components/PageButton';
 
 const LoaderOverlay = styled(Loader)`
@@ -41,13 +42,12 @@ const Middle = styled.div`
 
 enum MenuType {
   About = 'about',
-  Portfolio = 'portfolio',
+  Folio = 'folio'
 }
 
 const Menu = styled.div`
   margin-top: 6vh;
 `;
-
 
 const Home: FC = () => {
   const holderRef = useRef(null);
@@ -77,15 +77,24 @@ const Home: FC = () => {
               <SocialMenuHolder />
               <Menu>
                 <PageButton placement="Left" onClick={() => setActiveOverlay(MenuType.About)}>About</PageButton>
-                <PageButton placement="Right" onClick={() => setActiveOverlay(MenuType.Portfolio)}>Folio</PageButton>
+                <PageButton placement="Right" onClick={() => setActiveOverlay(MenuType.Folio)}>Folio</PageButton>
               </Menu>
             </Middle>
             <OverlayWithAnimation
               title={'About'}
               isVisible={MenuType.About === activeOverlay}
               onClose={() => setActiveOverlay(null)}
+              direction={'Left'}
             >
               <About isOpen={MenuType.About === activeOverlay}/>
+            </OverlayWithAnimation>
+            <OverlayWithAnimation
+              title={'Folio'}
+              isVisible={MenuType.Folio === activeOverlay}
+              onClose={() => setActiveOverlay(null)}
+              direction={'Right'}
+            >
+              <Folio />
             </OverlayWithAnimation>
           </FadeIn>
         )}

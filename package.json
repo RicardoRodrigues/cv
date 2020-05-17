@@ -9,6 +9,7 @@
   "dependencies": {
     "@rehooks/component-size": "^1.0.3",
     "next": "^9.3.6",
+    "next-images": "^1.4.0",
     "polished": "^3.6.2",
     "react": "^16.13.1",
     "react-animated-css": "^1.2.1",

@@ -5,7 +5,7 @@ type BreakpointType = keyof typeof theme.breakpoints;
 type BreakpointInPxType = {
   [key in BreakpointType]?: string;
 }
-const breakpointsInPx: BreakpointInPxType = {};
+export const breakpointsInPx: BreakpointInPxType = {};
 
 const {breakpoints} = theme;
 for (let key in breakpoints) {
