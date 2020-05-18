@@ -34048,7 +34048,7 @@ var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 var Holder = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div.withConfig({
   displayName: "About__Holder",
   componentId: "sc-1www6jp-0"
-})(["", ";a{font-weight:bold;transition:.4s ease-in-out;color:", ";text-decoration:underline;&:hover{color:", ";}}"], _theme__WEBPACK_IMPORTED_MODULE_2__["default"].typography.body, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].palette.button.secondary.normal, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].palette.button.secondary.hover);
+})(["", ";margin-bottom:50px;text-align:justify;a{font-weight:bold;transition:.4s ease-in-out;color:", ";text-decoration:underline;&:hover{color:", ";}}"], _theme__WEBPACK_IMPORTED_MODULE_2__["default"].typography.body, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].palette.button.secondary.normal, _theme__WEBPACK_IMPORTED_MODULE_2__["default"].palette.button.secondary.hover);
 var SkillBarHolder = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["default"])(_SkillBar__WEBPACK_IMPORTED_MODULE_3__["default"]).withConfig({
   displayName: "About__SkillBarHolder",
   componentId: "sc-1www6jp-1"
@@ -34079,35 +34079,35 @@ var About = function About(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53,
+      lineNumber: 54,
       columnNumber: 3
     }
   }, __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 5
     }
   }, "I'm ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 12
     }
   }, "Ricardo"), ", a ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54,
+      lineNumber: 55,
       columnNumber: 40
     }
   }, "Front End Developer"), " and passionate for new emerging technologies. My strong persistence is one of the biggest strengths."), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
       columnNumber: 5
     }
   }, "Most of my life was spent in an Island on Atlantic Ocean, called ", __jsx("a", {
@@ -34116,28 +34116,28 @@ var About = function About(_ref) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
       columnNumber: 73
     }
   }, "Madeira Island"), ", Island of flowers... or just look where ", __jsx("strong", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55,
+      lineNumber: 56,
       columnNumber: 196
     }
   }, "Cristiano Ronaldo"), " born."), __jsx("p", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56,
+      lineNumber: 57,
       columnNumber: 5
     }
-  }, "Travel is a must and know new people and cultures. Can't wait for a swimm in some nice beach and sun (What happen when you grow near the sea). Love to practice Basketball and Football."), "I\u2019m Ralph. As a passionate front-end developer, I prefer to run my own business rather than routine office work. Such lifestyle helps me enjoy my favourite hobbie \u2013  . Being able to do your job in every corner of our planet is amazing! Graphic design is also my passion! Mostly because it helps me to overcome my emotions and show people part of my world. I\u2019m looking forward to work with designers and creative experts who are as inspired and enthusiastic as I am.", __jsx("h5", {
+  }, "Travel is a must and know new people and cultures. Can't wait for a swimm in some nice beach and sun (What happen when you grow near the sea). Love to practice Basketball and Football."), "As a passionate front-end developer, I prefer to run my own business rather than routine office work. Such lifestyle helps me enjoy my favourite hobbie \u2013  . Being able to do your job in every corner of our planet is amazing! Graphic design is also my passion! Mostly because it helps me to overcome my emotions and show people part of my world. I\u2019m looking forward to work with designers and creative experts who are as inspired and enthusiastic as I am.", __jsx("h5", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62,
+      lineNumber: 63,
       columnNumber: 5
     }
   }, "Skills"), SKILLS.map(function (_ref2) {
@@ -34152,7 +34152,7 @@ var About = function About(_ref) {
       __self: _this,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 64,
+        lineNumber: 65,
         columnNumber: 7
       }
     });
@@ -35753,7 +35753,7 @@ function expandBuilder(duration) {
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!******************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F&absolutePagePath=%2FUsers%2Fpsyckic%2FDevelopment%2FCV%2Fsrc%2Fpages%2Findex.tsx&hotRouterUpdates=true ***!
   \******************************************************************************************************************************************************/
@@ -35776,5 +35776,5 @@ module.exports = dll_c2e10d183b950a67d9e7;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=index.js.map

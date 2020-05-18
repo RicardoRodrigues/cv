@@ -127,7 +127,7 @@ var NotFoundPage = function NotFoundPage() {
 
 /***/ }),
 
-/***/ 2:
+/***/ 1:
 /*!*************************************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2F_error&absolutePagePath=%2FUsers%2Fpsyckic%2FDevelopment%2FCV%2Fsrc%2Fpages%2F_error.tsx&hotRouterUpdates=true ***!
   \*************************************************************************************************************************************************************/
@@ -140,4 +140,4 @@ module.exports = __webpack_require__(/*! next-client-pages-loader?page=%2F_error
 /***/ })
 
 })
-//# sourceMappingURL=_error.js.3da31a20ce6deae6f9c7.hot-update.js.map
+//# sourceMappingURL=_error.js.cfec010851aabbfff391.hot-update.js.map
