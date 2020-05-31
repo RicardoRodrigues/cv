@@ -5,6 +5,10 @@ import theme from '../../theme';
 interface IProps {
   className?: string;
   id: string | number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  skills: string[];
 }
 
 const Holder = styled.article`
@@ -125,13 +129,50 @@ const Description = styled.div`
   opacity: 0;
   filter: alpha(opacity=0);
   transition: all 1.2s;
-
+  overflow-y: auto;
   font-size: 16px;
+
+  h3 {
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  a {
+    font-weight: bold;
+    transition: .4s ease-in-out;
+    color: ${theme.palette.button.secondary.normal};
+    text-decoration: underline;
+    &:hover {
+      color: ${theme.palette.button.secondary.hover};
+    }
+  }
+
+  p {
+    text-align: justify;
+  }
 
   ${Input}:checked ~ ${ContentHolder} & {
     top: 36px;
     opacity: 1;
     filter: alpha(opacity=100);
+  }
+
+  &::-webkit-scrollbar {
+    width: 14px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-clip: content-box;
+    border: 4px solid transparent;
+    border-radius: 7px;
+    box-shadow: inset 0 0 0 10px;
+  }
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
   }
 `;
 
@@ -160,7 +201,6 @@ const ImageHolder = styled.div<{backgroundImage: string}>`
   }
 `;
 
-
 const Chip = styled.div`
   display: inline-block;
   font-size: 12px;
@@ -173,7 +213,7 @@ const Chip = styled.div`
 `;
 
 
-const FolioCard: FC<IProps> = ({className, id}) => (
+const FolioCard: FC<IProps> = ({className, id, title, description, imageUrl, skills}) => (
   <Holder className={className}>
     <Input id={`folio-${id}`} type="checkbox" />
     <ExpandButton htmlFor={`folio-${id}`}>
@@ -184,23 +224,22 @@ const FolioCard: FC<IProps> = ({className, id}) => (
       </div>
     </ExpandButton>
     <Intro>
-      <strong>FACEIT Web</strong>
+      <strong>{title}</strong>
       <div>
-        <Chip>
-          html/css
-        </Chip>
-        <Chip>
-          react
-        </Chip>
+        {skills.map(skill => 
+          <Chip>
+            {skill}
+          </Chip>
+        )}
       </div>
     </Intro>
     <ContentHolder>
-      <ImageHolder backgroundImage={`folio/${id}.jpg`} />
-      <Description>
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-        Lorem Ipsum Lorem Ipsum...
-      </Description>
+      <ImageHolder backgroundImage={imageUrl} />
+      <Description 
+        dangerouslySetInnerHTML={{
+        __html: description
+        }}
+      />
     </ContentHolder>
   </Holder>
 )
