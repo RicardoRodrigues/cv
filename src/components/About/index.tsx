@@ -56,10 +56,6 @@ const About: FC<IProps> = ({className, isOpen}) => (
     <p>Most of my life was spent in an Island on Atlantic Ocean, called <a href="http://en.wikipedia.org/wiki/Madeira" target="_blank">Madeira Island</a>, Island of flowers... or just look where <strong>Cristiano Ronaldo</strong> born.</p>
     <p>Travel is a must and know new people and cultures. Can't wait for a swimm in some nice beach and sun (What happen when you grow near the sea). Love to practice Basketball and Football.</p>
 
-    As a passionate front-end developer, I prefer to run my own business rather than routine office work.
-    Such lifestyle helps me enjoy my favourite hobbie –  . Being able to do your job in every corner of our planet is amazing!
-    Graphic design is also my passion! Mostly because it helps me to overcome my emotions and show people part of my world. I’m looking forward to work with designers and creative experts who are as inspired and enthusiastic as I am.
-
     <h5>Skills</h5>
     {SKILLS.map(({id, name, percentage}) => (
       <SkillBarHolder key={id} name={name} percentage={percentage} isVisible={isOpen}/>
