@@ -10,7 +10,7 @@ module.exports = withImages({
       "/": { page: "/" }
     }
   },
-  assetPrefix: !debug ? '/CV/' : '',
+  assetPrefix: !debug ? '/cv/' : '',
   webpack: (config, { dev }) => {
     // Perform customizations to webpack config
     // console.log('webpack');
